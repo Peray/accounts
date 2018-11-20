@@ -1,0 +1,140 @@
+<div class="panel panel-primary main">
+	<h3 class="panel-heading">账单系统</h3>
+	<div class="panel-body">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th ng-click="desc = !desc">序号
+						<span class="glyphicon glyphicon-sort"></span>
+					</th>
+					<th>名称</th>
+					<th>账单日</th>
+					<th>还款日</th>
+					<!-- <th ng-repeat="item in months" ng-class="{'active': currentMonth == item.startOf('month').valueOf()}">{{item.month() + 1 +'月'}}</th> -->
+					<th ng-repeat="item in months">{{item}}</th>
+					<th class="text-center">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in products | orderBy: 'num': desc track by $index">
+					<td class="text-center">{{item.num}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.startDate}}</td>
+					<td>{{item.endDate}}</td>
+					<td ng-bind="item.nov ? item.nov : null | currency:'￥'"></td>
+					<td ng-bind="item.dec ? item.dec : null | currency:'￥'"></td>
+					<td ng-bind="item.jan ? item.jan : null | currency:'￥'"></td>
+					<td ng-bind="item.feb ? item.feb : null | currency:'￥'"></td>
+					<td ng-bind="item.mar ? item.mar : null | currency:'￥'"></td>
+					<td ng-bind="item.apr ? item.apr : null | currency:'￥'"></td>
+					<td ng-bind="item.may ? item.may : null | currency:'￥'"></td>
+					<td ng-bind="item.jun ? item.jun : null | currency:'￥'"></td>
+					<td ng-bind="item.jul ? item.jul : null | currency:'￥'"></td>
+					<td ng-bind="item.aug ? item.aug : null | currency:'￥'"></td>
+					<td ng-bind="item.sept ? item.sept : null | currency:'￥'"></td>
+					<td class="text-center">
+						<button class="btn btn-xs btn-primary" ng-click="deleteProduct(item)">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true" data-dismiss="alert"></span>
+						</button>
+						<button class="btn btn-xs btn-primary" ng-click="editOrCreateProduct(item)">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+				<tr class="primary">
+					<td class="text-center" colspan="4">合计</td>
+					<td ng-repeat="item in totals track by $index" ng-bind="item ? item : null | currency:'￥'"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<button class="btn btn-xs btn-primary" ng-click="listProducts()">刷新</button>
+			<button class="btn btn-xs btn-primary" ng-click="editOrCreateProduct()">新增</button>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="editAccounts" tabindex="-1" role="dialog" aria-labelledby="editAccounts">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">编辑</h4>
+			</div>
+			<div class="modal-body">
+				<form novalidate>
+					<div class="form-group">
+						<label>序号:</label>
+						<input type="text" class="form-control" ng-model="currentProduct.num" />
+					</div>
+					<div class="form-group">
+						<label>名称:</label>
+						<input type="text" class="form-control" ng-model="currentProduct.name" />
+					</div>
+					<div class="form-group">
+						<label>账单日：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.startDate" />
+					</div>
+					<div class="form-group">
+						<label>还款日：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.endDate" />
+					</div>
+					<div class="form-group">
+						<label>一月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.jan" />
+					</div>
+					<div class="form-group">
+						<label>二月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.feb" />
+					</div>
+					<div class="form-group">
+						<label>三月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.mar" />
+					</div>
+					<div class="form-group">
+						<label>四月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.apr" />
+					</div>
+					<div class="form-group">
+						<label>五月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.may" />
+					</div>
+					<div class="form-group">
+						<label>六月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.jun" />
+					</div>
+					<div class="form-group">
+						<label>七月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.jul" />
+					</div>
+					<div class="form-group">
+						<label>八月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.aug" />
+					</div>
+					<div class="form-group">
+						<label>九月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.sept" />
+					</div>
+					<div class="form-group">
+						<label>十月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.oct" />
+					</div>
+					<div class="form-group">
+						<label>十一月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.nov" />
+					</div>
+					<div class="form-group">
+						<label>十二月：</label>
+						<input type="text" class="form-control" ng-model="currentProduct.dec" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancleEdit()">取消</button>
+				<button type="button" class="btn btn-primary" ng-click="saveEdit(currentProduct)">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
