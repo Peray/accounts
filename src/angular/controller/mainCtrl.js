@@ -15,7 +15,7 @@ commonApp
   //           var month = moment({year: moment().year(), month: i, day: 1});
   //           arr[i] = month;
   //       };
-  		var arr = ['11月', '12月', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月','9月']
+  		var arr = ['12月', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月','9月']
         $scope.months = angular.copy(arr);
 	};
 	$scope._init();
@@ -54,7 +54,7 @@ commonApp
 						decS += dec;
 					});
 					// totals.push(janS,febS,marS,aprS,mayS,junS,julS,augS,septS,octS,novS,decS);
-					totals.push(novS,decS,janS,febS,marS,aprS,mayS,junS,julS,augS,septS);
+					totals.push(decS,janS,febS,marS,aprS,mayS,junS,julS,augS,septS);
 					$scope.totals = angular.copy(totals);
 				}
 			})
