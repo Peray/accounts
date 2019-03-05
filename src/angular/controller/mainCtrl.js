@@ -7,6 +7,7 @@ commonApp
 	$scope.currentProduct = null;
 	$scope.productResource = $resource(baseUrl + ":id", {id: "@id"});
 	$scope.currentMonth = moment().startOf('month').valueOf();
+	$scope.currentDay = moment().date();
 
 	$scope._init = function () {
 		// var now = moment();
@@ -15,7 +16,7 @@ commonApp
   //           var month = moment({year: moment().year(), month: i, day: 1});
   //           arr[i] = month;
   //       };
-  		var arr = ['1月', '2月', '3月', '4月', '5月']
+  		var arr = ['3月', '4月', '5月']
         $scope.months = angular.copy(arr);
 	};
 	$scope._init();
@@ -54,7 +55,7 @@ commonApp
 						decS += dec;
 					});
 					// totals.push(janS,febS,marS,aprS,mayS,junS,julS,augS,septS,octS,novS,decS);
-					totals.push(janS,febS,marS,aprS,mayS);
+					totals.push(marS,aprS,mayS);
 					$scope.totals = angular.copy(totals);
 				}
 			})

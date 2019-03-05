@@ -33,6 +33,10 @@
 .main .panel-body table thead th.active {
   background-color: rgba(48, 116, 175, 0.3) !important; }
 
+.main .panel-body table tbody tr td.active.active {
+  background-color: red !important;
+  color: white; }
+
 .main .panel-body table tbody tr.primary {
   background-color: #337ab7 !important;
   color: #fff;

@@ -45,6 +45,12 @@ $primary: #337ab7;
 				}
 			}
 			tbody tr{
+				td.active {
+					&.active {
+						background-color: red!important;
+						color: white;
+					}
+				}
 				&.primary{
 					background-color: $primary!important;
 					color: #fff;

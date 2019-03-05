@@ -4,9 +4,9 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th ng-click="desc = !desc">序号
+					<!-- <th ng-click="desc = !desc">序号
 						<span class="glyphicon glyphicon-sort"></span>
-					</th>
+					</th> -->
 					<th>名称</th>
 					<th>账单日</th>
 					<th>还款日</th>
@@ -17,14 +17,14 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in products | orderBy: 'num': desc track by $index">
-					<td class="text-center">{{item.num}}</td>
+					<!-- <td class="text-center">{{item.num}}</td> -->
 					<td>{{item.name}}</td>
-					<td>{{item.startDate}}</td>
-					<td>{{item.endDate}}</td>
+					<td>{{item.startDate}}号</td>
+					<td ng-class="{'active': currentDay == item.endDate}">{{item.endDate}}号</td>
 <!-- 					<td ng-bind="item.nov ? item.nov : null | currency:'￥'"></td> -->
 					<!-- <td ng-bind="item.dec ? item.dec : null | currency:'￥'"></td> -->
-					<td ng-bind="item.jan ? item.jan : null | currency:'￥'"></td>
-					<td ng-bind="item.feb ? item.feb : null | currency:'￥'"></td>
+					<!-- <td ng-bind="item.jan ? item.jan : null | currency:'￥'"></td> -->
+					<!-- <td ng-bind="item.feb ? item.feb : null | currency:'￥'"></td> -->
 					<td ng-bind="item.mar ? item.mar : null | currency:'￥'"></td>
 					<td ng-bind="item.apr ? item.apr : null | currency:'￥'"></td>
 					<td ng-bind="item.may ? item.may : null | currency:'￥'"></td>
@@ -38,7 +38,7 @@
 					</td>
 				</tr>
 				<tr class="primary">
-					<td class="text-center" colspan="4">合计</td>
+					<td class="text-center" colspan="3">合计</td>
 					<td ng-repeat="item in totals track by $index" ng-bind="item ? item : null | currency:'￥'"></td>
 					<td></td>
 				</tr>
@@ -77,14 +77,14 @@
 						<label>还款日：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.endDate" />
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>一月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.jan" />
 					</div>
 					<div class="form-group">
 						<label>二月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.feb" />
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label>三月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.mar" />
@@ -97,7 +97,7 @@
 						<label>五月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.may" />
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>六月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.jun" />
 					</div>
@@ -124,7 +124,7 @@
 					<div class="form-group">
 						<label>十二月：</label>
 						<input type="text" class="form-control" ng-model="currentProduct.dec" />
-					</div>
+					</div> -->
 				</form>
 			</div>
 			<div class="modal-footer">
