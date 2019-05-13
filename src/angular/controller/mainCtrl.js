@@ -16,7 +16,7 @@ commonApp
   //           var month = moment({year: moment().year(), month: i, day: 1});
   //           arr[i] = month;
   //       };
-  		var arr = ['4月', '5月']
+  		var arr = ['本月', '下月']
         $scope.months = angular.copy(arr);
 	};
 	$scope._init();
